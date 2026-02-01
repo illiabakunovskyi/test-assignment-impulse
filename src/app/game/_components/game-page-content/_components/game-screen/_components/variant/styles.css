@@ -21,6 +21,10 @@
     font-weight: 600;
 }
 
+.mobile__background {
+    display: none;
+}
+
 .background:hover .background__line,
 .background:hover .background__shape,
 .mobile__background:hover .mobile__background__line,
@@ -47,7 +51,11 @@
 .background--correct .background__line,
 .background--correct .background__shape,
 .mobile__background--correct .mobile__background__line,
-.mobile__background--correct .mobile__background__shape {
+.mobile__background--correct .mobile__background__shape,
+.button:focus .background--correct .background__line,
+.button:focus .background--correct .background__shape,
+.button:focus .mobile__background--correct .mobile__background__line,
+.button:focus .mobile__background--correct .mobile__background__shape {
     stroke: var(--green-100);
 }
 
@@ -59,7 +67,11 @@
 .background--wrong .background__line,
 .background--wrong .background__shape,
 .mobile__background--wrong .mobile__background__line,
-.mobile__background--wrong .mobile__background__shape {
+.mobile__background--wrong .mobile__background__shape,
+.button:focus .background--wrong .background__line,
+.button:focus .background--wrong .background__shape,
+.button:focus .mobile__background--wrong .mobile__background__line,
+.button:focus .mobile__background--wrong .mobile__background__shape {
     stroke: var(--red-100);
 }
 
@@ -84,15 +96,12 @@
     .button {
         height: 56px;
     }
-
     .button__text {
         font-size: 14px;
     }
-
     .mobile__background {
         display: block;
     }
-
     .background {
         display: none;
     }

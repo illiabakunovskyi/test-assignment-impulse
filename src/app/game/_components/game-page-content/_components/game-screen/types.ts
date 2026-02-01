@@ -6,6 +6,7 @@ export type GameScreenProps = {
   onVariantClick: MouseEventHandler<HTMLButtonElement>;
   score: number;
   answer: string;
+  correctAnswer: string | string[];
   stepsCount: number;
   baseValue: number;
   currencySign: string;

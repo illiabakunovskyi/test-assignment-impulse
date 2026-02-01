@@ -10,6 +10,7 @@ export const GamePageContent: FC<GamePageContentProps> = ({ config }) => {
   const {
     questionNumber,
     answer,
+    correctAnswer,
     handleVariantClick,
     handleTryAgainClick,
     score,
@@ -32,6 +33,7 @@ export const GamePageContent: FC<GamePageContentProps> = ({ config }) => {
       question={config.questions[questionNumber].question}
       score={score}
       answer={answer}
+      correctAnswer={correctAnswer}
       options={config.questions[questionNumber].options}
       onVariantClick={handleVariantClick}
       stepsCount={config.questions.length}

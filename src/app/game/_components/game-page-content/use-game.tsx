@@ -1,3 +1,5 @@
+"use client";
+
 import {
   type MouseEventHandler,
   useCallback,
@@ -19,6 +21,11 @@ export const useGame = (config: GamePageContentProps["config"]) => {
   const [isOver, setIsOver] = useState(false);
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+  const correctAnswer = useMemo(
+    () => config.questions[questionNumber].answer,
+    [config.questions, questionNumber],
+  );
 
   const scoreLabel = useMemo(
     () =>
@@ -54,7 +61,11 @@ export const useGame = (config: GamePageContentProps["config"]) => {
         }, TIMEOUT_DURATION);
       } else {
         timeoutRef.current = setTimeout(() => {
-          setIsOver(true);
+          setIsAnswerRevealed(true);
+
+          timeoutRef.current = setTimeout(() => {
+            setIsOver(true);
+          }, TIMEOUT_DURATION);
         }, TIMEOUT_DURATION);
       }
     },
@@ -65,10 +76,17 @@ export const useGame = (config: GamePageContentProps["config"]) => {
     setQuestionNumber(INITIAL_QUESTION_NUMBER);
     setIsOver(false);
     setScore(0);
+    setAnswer("");
+    setIsAnswerRevealed(false);
   }, []);
 
   useEffect(() => {
-    if (isAnswerRevealed) {
+    if (
+      isAnswerRevealed &&
+      (Array.isArray(correctAnswer)
+        ? correctAnswer.includes(answer)
+        : answer === correctAnswer)
+    ) {
       timeoutRef.current = setTimeout(() => {
         if (questionNumber + 1 < config.questions.length) {
           setQuestionNumber(questionNumber + 1);
@@ -81,15 +99,17 @@ export const useGame = (config: GamePageContentProps["config"]) => {
         }
 
         setIsAnswerRevealed(false);
-
-        try {
-          (document.activeElement as HTMLElement).blur();
-        } catch (error) {
-          console.error(error);
-        }
       }, TIMEOUT_DURATION);
     }
-  }, [config.questions.length, isAnswerRevealed, questionNumber]);
+  }, [answer, config.questions.length, correctAnswer, isAnswerRevealed, questionNumber]);
+
+  useEffect(() => {
+    try {
+      (document.activeElement as HTMLElement).blur();
+    } catch (error) {
+      console.error(error);
+    }
+  }, [questionNumber]);
 
   useEffect(() => {
     return () => {
@@ -102,6 +122,7 @@ export const useGame = (config: GamePageContentProps["config"]) => {
   return {
     questionNumber,
     answer,
+    correctAnswer,
     score,
     isAnswerRevealed,
     scoreLabel,
