@@ -1,0 +1,20 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Get list of staged JS/JSX/TS/TSX files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$')
+
+# Exit if no files to lint
+if [ -z "$STAGED_FILES" ]; then
+  exit 0
+fi
+
+# Run eslint on staged files
+echo "Running ESLint on staged files..."
+npx eslint $STAGED_FILES
+
+# Capture eslint exit code
+ESLINT_EXIT=$?
+
+# Exit with eslint's exit code
+exit $ESLINT_EXIT
