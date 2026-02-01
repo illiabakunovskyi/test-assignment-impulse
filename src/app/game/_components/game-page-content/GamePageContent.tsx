@@ -15,6 +15,7 @@ export const GamePageContent: FC<GamePageContentProps> = ({ config }) => {
     score,
     scoreLabel,
     isOver,
+    isAnswerRevealed,
   } = useGame(config);
 
   if (!config) {
@@ -37,6 +38,7 @@ export const GamePageContent: FC<GamePageContentProps> = ({ config }) => {
       currencySign={config.gratification.currencySign}
       baseValue={config.gratification.baseValue}
       stepMultiplier={config.gratification.stepMultiplier}
+      isAnswerRevealed={isAnswerRevealed}
     />
   );
 };

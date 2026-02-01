@@ -20,20 +20,18 @@ export const useGame = (config: GamePageContentProps["config"]) => {
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 
-  const scoreLabel = useMemo(() => {
-    const isPassedFirstRound =
-      score * config.gratification.stepMultiplier !== 0;
-
-    return isPassedFirstRound
-      ? `${config.gratification.currencySign}${(config.gratification.baseValue * Math.pow(config.gratification.stepMultiplier, config.questions.length - 1 - score)).toLocaleString()} earned`
-      : "nothing earned";
-  }, [
-    config.gratification.baseValue,
-    config.gratification.currencySign,
-    config.gratification.stepMultiplier,
-    config.questions.length,
-    score,
-  ]);
+  const scoreLabel = useMemo(
+    () =>
+      score === 0
+        ? "nothing earned"
+        : `${config.gratification.currencySign}${(config.gratification.baseValue * Math.pow(config.gratification.stepMultiplier, score)).toLocaleString()} earned`,
+    [
+      config.gratification.baseValue,
+      config.gratification.currencySign,
+      config.gratification.stepMultiplier,
+      score,
+    ],
+  );
 
   const handleVariantClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
@@ -56,17 +54,17 @@ export const useGame = (config: GamePageContentProps["config"]) => {
         }, TIMEOUT_DURATION);
       } else {
         timeoutRef.current = setTimeout(() => {
-          setScore(0);
           setIsOver(true);
         }, TIMEOUT_DURATION);
       }
     },
-    [questionNumber, config],
+    [config.questions, questionNumber],
   );
 
   const handleTryAgainClick = useCallback(() => {
     setQuestionNumber(INITIAL_QUESTION_NUMBER);
     setIsOver(false);
+    setScore(0);
   }, []);
 
   useEffect(() => {

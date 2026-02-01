@@ -1,6 +1,9 @@
 .button {
     padding: 4px;
+    width: 24px;
+    height: 24px;
     border: none;
+    background: transparent;
 }
 
 .button:hover {

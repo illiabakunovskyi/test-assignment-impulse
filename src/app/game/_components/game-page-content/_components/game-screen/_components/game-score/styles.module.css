@@ -1,6 +1,39 @@
-.wrapper {
+.wrapper__desktop {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 8px;
+}
+
+.toggle {
+    display: none;
+}
+
+.wrapper__mobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .wrapper__desktop {
+        display: none;
+    }
+
+    .wrapper__mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: var(--black-5);
+    }
+
+    .toggle {
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        z-index: 1;
+    }
 }

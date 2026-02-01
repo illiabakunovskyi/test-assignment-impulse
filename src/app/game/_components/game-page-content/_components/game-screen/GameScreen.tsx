@@ -1,3 +1,5 @@
+"use client";
+
 import type { FC } from "react";
 
 import styles from "./styles.module.css";
@@ -15,6 +17,7 @@ export const GameScreen: FC<GameScreenProps> = ({
   baseValue,
   currencySign,
   stepMultiplier,
+  isAnswerRevealed,
 }) => {
   return (
     <div className={styles.content}>
@@ -29,7 +32,15 @@ export const GameScreen: FC<GameScreenProps> = ({
               className={styles.content__left__options__variant}
               onClick={onVariantClick}
               value={option}
-              status={answer === option ? "selected" : undefined}
+              status={
+                !isAnswerRevealed
+                  ? answer === option
+                    ? "selected"
+                    : "inactive"
+                  : answer === option
+                    ? "correct"
+                    : "wrong"
+              }
             >
               {option}
             </Variant>

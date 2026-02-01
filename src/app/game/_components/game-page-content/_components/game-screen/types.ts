@@ -10,4 +10,5 @@ export type GameScreenProps = {
   baseValue: number;
   currencySign: string;
   stepMultiplier: number;
+  isAnswerRevealed: boolean;
 };

@@ -1,6 +1,7 @@
 .content {
     display: flex;
     height: 100vh;
+    position: relative;
 }
 
 .content__left {
@@ -33,8 +34,14 @@
 }
 
 @media (max-width: 800px) {
+    .content__left {
+        padding: 136px 0 0 0;
+    }
+
     .content__left__question {
         font-size: 18px;
+        padding-inline: 16px;
+        text-align: center;
     }
 }
 
