@@ -4,7 +4,32 @@ import type { BackgroundProps, VariantProps } from "./types";
 import { ALPHABET } from "./constants";
 import "./styles.css";
 
-const Background: FC<BackgroundProps> = ({ status = 'inactive' }) => {
+const MobileBackground: FC<BackgroundProps> = ({ status = "inactive" }) => {
+  return (
+    <svg
+      width="320"
+      height="56"
+      viewBox="0 0 320 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={
+        status
+          ? `mobile__background mobile__background--${status}`
+          : "mobile__background"
+      }
+    >
+      <path d="M303 28L320 28" className="mobile__background__line" />
+      <path d="M0 28L17 28" className="mobile__background__line" />
+      <path
+        d="M42.1758 0.5H277.824C281.538 0.5 285.024 2.29338 287.183 5.31543L303.385 28L287.183 50.6846C285.024 53.7066 281.538 55.5 277.824 55.5H42.1758C38.4619 55.5 34.9761 53.7066 32.8174 50.6846L16.6143 28L32.8174 5.31543C34.9761 2.29338 38.4619 0.5 42.1758 0.5Z"
+        fill="white"
+        className="mobile__background__shape"
+      />
+    </svg>
+  );
+};
+
+const Background: FC<BackgroundProps> = ({ status = "inactive" }) => {
   return (
     <svg
       width="405"
@@ -34,6 +59,7 @@ export const Variant: FC<VariantProps> = ({
 }) => {
   return (
     <button {...rest} className={className ? `button ${className}` : "button"}>
+      <MobileBackground status={status} />
       <Background status={status} />
 
       <p className="button__text">

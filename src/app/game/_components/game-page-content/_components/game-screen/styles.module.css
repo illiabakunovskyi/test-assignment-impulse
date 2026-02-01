@@ -43,6 +43,10 @@
         padding-inline: 16px;
         text-align: center;
     }
+
+    .content__left__options {
+        justify-content: center;
+    }
 }
 
 @media (min-width: 2560px) {
