@@ -26,7 +26,7 @@ export default function Home() {
             a millionaire?
           </h1>
 
-          <Link href="/game">
+          <Link href="/game" className={styles.content__right__link}>
             <Button className={styles.content__right__button}>Start</Button>
           </Link>
         </div>

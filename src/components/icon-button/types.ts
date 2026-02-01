@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-export type IconButtonProps = HTMLAttributes<HTMLButtonElement> & {
+export type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   name: string;
   alt: string;
 };

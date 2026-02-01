@@ -7,7 +7,7 @@ type Question = {
 export type GameConfigResponseData = {
   questions: Question[];
   gratification: {
-    baseValues: number;
+    baseValue: number;
     stepMultiplier: number;
     currencySign: string;
   };

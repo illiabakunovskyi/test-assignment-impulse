@@ -1,3 +1,4 @@
 export type ScoreScreenProps = {
-  score: string;
+  scoreLabel: string;
+  onTryAgainClick: () => void;
 };

@@ -18,15 +18,18 @@
     justify-content: center;
     gap: clamp(0px, 5vw, 120px);
     padding-inline: 80px;
+    padding-bottom: 10vh;
 }
 
 .content__left {
     position: relative;
     flex: 1;
     height: 367px;
+    min-width: 400px;
 }
 
 .content__right {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 64px;
@@ -42,6 +45,11 @@
 
 .content__right__button {
     width: 296px;
+}
+
+.content__right__link {
+    width: fit-content;
+    outline: none;
 }
 
 @media (max-width: 800px) {
@@ -72,5 +80,20 @@
         font-size: 32px;
         font-weight: bold;
         text-align: center;
+    }
+}
+
+@media (min-width: 2560px) {
+    .content__left {
+        height: 600px;
+    }
+
+    .content__right__title {
+        font-size: 96px;
+        font-weight: bold;
+    }
+
+    .content__right__button {
+        font-size: 44px;
     }
 }

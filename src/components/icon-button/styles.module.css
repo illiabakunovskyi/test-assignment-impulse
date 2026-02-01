@@ -1,14 +1,8 @@
 .button {
     padding: 4px;
     border: none;
-    outline: none;
 }
 
 .button:hover {
-    background-color: var(--orange-80);
     cursor: pointer;
-}
-
-.button:active {
-    background-color: var(--orange-120);
 }

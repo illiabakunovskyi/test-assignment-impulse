@@ -12,7 +12,35 @@
     padding: 133px 0 120px 80px;
 }
 
+.content__left__question {
+    font-size: 32px;
+    line-height: 1.16;
+    max-width: 624px;
+}
+
+.content__left__options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content__left__options__variant {
+    margin-bottom: 16px;
+}
+
 .steps {
     width: 376px;
     background: var(--white-100);
+}
+
+@media (max-width: 800px) {
+    .content__left__question {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .content__left__question {
+        font-size: 48px;
+        max-width: 900px;
+    }
 }

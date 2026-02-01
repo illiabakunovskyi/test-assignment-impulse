@@ -1,0 +1,56 @@
+.button {
+    border: none;
+    outline: none;
+    position: relative;
+    background: none;
+    font-family: Inter;
+    height: 72px;
+    cursor: pointer;
+}
+
+.button__text {
+    position: absolute;
+    left: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.button__text__letter {
+    color: var(--orange-100);
+    font-weight: 600;
+}
+
+.background:hover .background__line,
+.background:hover .background__shape,
+.button:focus .background__line,
+.button:focus .background__shape {
+    stroke: var(--orange-100);
+}
+
+.background--inactive .background__line,
+.background--inactive .background__shape {
+    stroke: var(--black-40);
+}
+
+.background--inactive .background__shape {
+    fill: var(--white-100);
+}
+
+.background--correct .background__line,
+.background--correct .background__shape {
+    stroke: var(--green-100);
+}
+
+.background--correct .background__shape {
+    fill: var(--green-5);
+}
+
+.background--wrong .background__line,
+.background--wrong .background__shape {
+    stroke: var(--red-100);
+}
+
+.background--wrong .background__shape {
+    stroke: var(--red-5);
+}

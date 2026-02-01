@@ -27,7 +27,7 @@
     }
   ],
   "gratification": {
-    "baseValues": 500,
+    "baseValue": 500,
     "stepMultiplier": 2,
     "currencySign": "$"
   }

@@ -16,6 +16,10 @@
     cursor: pointer;
 }
 
+.button:focus {
+    background-color: var(--orange-80);
+}
+
 .button:active {
     background-color: var(--orange-120);
 }
