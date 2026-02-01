@@ -34,6 +34,9 @@ export const GamePageContent: FC<GamePageContentProps> = ({ config }) => {
       options={config.questions[questionNumber].options}
       onVariantClick={handleVariantClick}
       stepsCount={config.questions.length}
+      currencySign={config.gratification.currencySign}
+      baseValue={config.gratification.baseValue}
+      stepMultiplier={config.gratification.stepMultiplier}
     />
   );
 };

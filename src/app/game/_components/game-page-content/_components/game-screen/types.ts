@@ -7,4 +7,7 @@ export type GameScreenProps = {
   score: number;
   answer: string;
   stepsCount: number;
+  baseValue: number;
+  currencySign: string;
+  stepMultiplier: number;
 };

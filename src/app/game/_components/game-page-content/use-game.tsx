@@ -25,12 +25,13 @@ export const useGame = (config: GamePageContentProps["config"]) => {
       score * config.gratification.stepMultiplier !== 0;
 
     return isPassedFirstRound
-      ? `${config.gratification.currencySign}${(score * config.gratification.baseValue).toLocaleString()} earned`
+      ? `${config.gratification.currencySign}${(config.gratification.baseValue * Math.pow(config.gratification.stepMultiplier, config.questions.length - 1 - score)).toLocaleString()} earned`
       : "nothing earned";
   }, [
     config.gratification.baseValue,
     config.gratification.currencySign,
     config.gratification.stepMultiplier,
+    config.questions.length,
     score,
   ]);
 
@@ -54,7 +55,10 @@ export const useGame = (config: GamePageContentProps["config"]) => {
           setIsAnswerRevealed(true);
         }, TIMEOUT_DURATION);
       } else {
-        setIsOver(true);
+        timeoutRef.current = setTimeout(() => {
+          setScore(0);
+          setIsOver(true);
+        }, TIMEOUT_DURATION);
       }
     },
     [questionNumber, config],
@@ -71,11 +75,20 @@ export const useGame = (config: GamePageContentProps["config"]) => {
         if (questionNumber + 1 < config.questions.length) {
           setQuestionNumber(questionNumber + 1);
           setScore((prev) => prev + 1);
+          setAnswer("");
         } else {
           setQuestionNumber(INITIAL_QUESTION_NUMBER);
           setIsOver(true);
+          setAnswer("");
         }
+
         setIsAnswerRevealed(false);
+
+        try {
+          (document.activeElement as HTMLElement).blur();
+        } catch (error) {
+          console.error(error);
+        }
       }, TIMEOUT_DURATION);
     }
   }, [config.questions.length, isAnswerRevealed, questionNumber]);

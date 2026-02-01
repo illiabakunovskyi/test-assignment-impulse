@@ -12,6 +12,9 @@ export const GameScreen: FC<GameScreenProps> = ({
   score,
   answer,
   stepsCount,
+  baseValue,
+  currencySign,
+  stepMultiplier,
 }) => {
   return (
     <div className={styles.content}>
@@ -34,7 +37,13 @@ export const GameScreen: FC<GameScreenProps> = ({
         </div>
       </div>
 
-      <GameScore score={score} stepsCount={stepsCount} />
+      <GameScore
+        score={score}
+        stepsCount={stepsCount}
+        baseValue={baseValue}
+        currencySign={currencySign}
+        stepMultiplier={stepMultiplier}
+      />
     </div>
   );
 };

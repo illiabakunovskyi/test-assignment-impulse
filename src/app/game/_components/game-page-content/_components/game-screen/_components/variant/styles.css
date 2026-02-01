@@ -52,5 +52,14 @@
 }
 
 .background--wrong .background__shape {
-    stroke: var(--red-5);
+    fill: var(--red-5);
+}
+
+.background--selected .background__line,
+.background--selected .background__shape {
+    stroke: var(--orange-100);
+}
+
+.background--selected .background__shape {
+    fill: var(--orange-5);
 }

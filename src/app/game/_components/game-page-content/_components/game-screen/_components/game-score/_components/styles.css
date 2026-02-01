@@ -1,3 +1,34 @@
 .step {
     height: 32px;
+    position: relative;
+    font-family: Inter;
+}
+
+.step__text {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.step--current {
+    color: var(--orange-100);
+}
+
+.step--previous {
+    color: var(--black-40);
+}
+
+.step--next {
+    color: var(--black-100);
+}
+
+.step__background--current .step__background__line,
+.step__background--current .step__background__shape {
+    stroke: var(--orange-100);
+}
+
+.step__background__line,
+.step__background__shape {
+    stroke: var(--black-40);
 }
